@@ -1,6 +1,7 @@
 package com.github.mpolla
 
 import java.lang.RuntimeException
+import java.time.DateTimeException
 import java.time.LocalDate
 import java.util.*
 import kotlin.math.absoluteValue
@@ -30,8 +31,42 @@ object HetuUtil : FinIdUtil() {
         if (id?.length != HETU_LENGTH) {
             return false
         }
-        // TODO Validate date part.
+        if (!validateBirthDate(id)) {
+            return false
+        }
         return id[CONTROL_CHAR_INDEX] == computeControlCharacter(id)
+    }
+
+    private fun validateBirthDate(id: String): Boolean {
+        // Trivial check: do we have enough characters?
+        if (id?.length < 6) {
+            return false
+        }
+        // Second phase: does the id contain numbers?
+        val dd : Int
+        val mm : Int
+        val yy : Int
+        try {
+            dd = Integer.parseInt(id.substring(0, 2))
+            mm = Integer.parseInt(id.substring(2, 4))
+            yy = Integer.parseInt(id.substring(4, 6))
+        } catch (nfe : NumberFormatException) {
+            return false
+        }
+        val separator : Char = id[6]
+        val yyyy = yy + when (separator) {
+            '+' -> 1800
+            '-' -> 1900
+            'A' -> 2000
+            else -> return false
+        }
+        // Third phase: does the day exist in the calendar?
+        try {
+            LocalDate.of(yyyy, mm, dd)
+        } catch (dte : DateTimeException) {
+            return false
+        }
+        return true
     }
 
     private fun getDatePart(hetu: String) : String {

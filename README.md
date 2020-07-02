@@ -1,2 +1,4 @@
-fin-id-utis - Utilities for Finnish identity codes (HETU and SATU)
-==================================================================
+fin-id-utis - validate Finnish personal identity codes (HETU and SATU)
+======================================================================
+
+![CI](https://github.com/mpolla/fin-id-utils/workflows/CI/badge.svg)

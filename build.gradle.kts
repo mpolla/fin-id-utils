@@ -1,19 +1,46 @@
 plugins {
-    id("org.jetbrains.kotlin.jvm") version "1.3.50"
+    kotlin("jvm") version "1.3.50"
     id("org.jetbrains.dokka") version "0.9.18"
+    `maven-publish`
 }
 
-group = "com.gitlab.mpolla"
-version = "1.0-SNAPSHOT"
+group = "com.github.mpolla"
+version = "0.1"
 
 repositories {
     mavenCentral()
-     jcenter()
+    jcenter()
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    testCompile("junit:junit:4.12")
-    testCompile("org.apache.logging.log4j:log4j-api:2.12.1")
-    testCompile("org.apache.logging.log4j:log4j-core:2.12.1")
+    implementation(kotlin("stdlib"))
+    testImplementation("junit:junit:4.12")
+    testImplementation("org.apache.logging.log4j:log4j-api:2.12.1")
+    testImplementation("org.apache.logging.log4j:log4j-core:2.12.1")
 }
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/mpolla/fin-id-utils")
+            credentials {
+                username = project.findProperty("gpr.user") as String? ?: System.getenv("USERNAME")
+                password = project.findProperty("gpr.key") as String? ?: System.getenv("TOKEN")
+            }
+        }
+    }
+    publications {
+        register("gpr", MavenPublication::class) {
+            from(
+                    components["java"]
+            )
+        }
+    }
+}
+
+
+
+
+
+

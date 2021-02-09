@@ -1,5 +1,7 @@
-fin-id-utis - validate Finnish personal identity codes (HETU and SATU)
-======================================================================
+fin-id-utis - validate Finnish personal identity codes
+======================================================
+
+See https://dvv.fi/en/personal-identity-code
 
 ## Usage
 

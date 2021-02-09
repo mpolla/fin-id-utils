@@ -12,7 +12,7 @@ import kotlin.math.absoluteValue
  *
  * @see <a href="https://vrk.fi/en/personal-identity-code1">Finnish Population Register Centre</a>
  */
-object HetuUtil : FinIdUtil() {
+public object HetuUtil : FinIdUtil() {
 
     private const val DATEPART_START_INDEX = 0
     private const val DATEPART_END_INDEX = 6
@@ -39,7 +39,7 @@ object HetuUtil : FinIdUtil() {
 
     private fun validateBirthDate(id: String): Boolean {
         // Trivial check: do we have enough characters?
-        if (id?.length < 6) {
+        if (id.length < 6) {
             return false
         }
         // Second phase: does the id contain numbers?
@@ -83,7 +83,7 @@ object HetuUtil : FinIdUtil() {
      * @param hetu Personal id without the control character suffix.
      * @return Control character.
      */
-    fun computeControlCharacter(hetu : String): Char {
+    public fun computeControlCharacter(hetu : String): Char {
         val dateIndividualInteger = Integer.parseInt(getDatePart(hetu) + getIndividualPart(hetu))
         return computeControlChar(dateIndividualInteger)
     }
@@ -95,7 +95,7 @@ object HetuUtil : FinIdUtil() {
      * @param individualNumber Individual number (2..899).
      * @return Control character.
      */
-    fun computeControlCharacter(birthDate : LocalDate, individualNumber : Int) : Char {
+    public fun computeControlCharacter(birthDate : LocalDate, individualNumber : Int) : Char {
         val dateIndividualInteger = Integer.parseInt(getDatePart(birthDate) + String.format("%03d", individualNumber))
         return computeControlChar(dateIndividualInteger)
     }
@@ -106,7 +106,7 @@ object HetuUtil : FinIdUtil() {
      * @param hetu Identity code.
      * @return True if male.
      */
-    fun isMale(hetu: String): Boolean {
+    public fun isMale(hetu: String): Boolean {
         return !isFemale(hetu)
     }
 
@@ -116,7 +116,7 @@ object HetuUtil : FinIdUtil() {
      * @param hetu Identity code.
      * @return True if female.
      */
-    fun isFemale(hetu: String): Boolean {
+    public fun isFemale(hetu: String): Boolean {
         val individual = Integer.parseInt(getIndividualPart(hetu))
         return (individual % 2) == 0
     }

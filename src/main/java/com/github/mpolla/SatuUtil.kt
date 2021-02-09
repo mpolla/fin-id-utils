@@ -11,7 +11,7 @@ import java.util.Random
  *
  * SATU (Sähköinen AsisointiTUnnus in Finnish.
  */
-object SatuUtil : FinIdUtil() {
+public object SatuUtil : FinIdUtil() {
 
     private const val NUMBERPART_START_INDEX = 0
     private const val NUMBERPART_END_INDEX = 8

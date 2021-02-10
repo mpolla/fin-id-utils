@@ -3,6 +3,21 @@ fin-id-utis - validate Finnish personal identity codes
 
 See https://dvv.fi/en/personal-identity-code
 
+
+## Add dependency
+
+Maven
+
+    <dependency>
+      <groupId>com.github.mpolla</groupId>
+      <artifactId>fin-id-utils</artifactId>
+      <version>0.2</version>
+    </dependency>
+
+Gradle
+
+    compile("com.github.mpolla:fin-id-utils:0.2")
+
 ## Usage
 
 Validate a personal identity code.

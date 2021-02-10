@@ -24,7 +24,8 @@ public object SatuUtil : FinIdUtil() {
      * @param id Identity number to be validated.
      * @return True if valid.
      */
-    override fun isValid(id: String?): Boolean {
+    @JvmStatic
+    public fun isValid(id: String?): Boolean {
         if (id == null || id.length != SATU_LENGHT) {
             return false
         }
@@ -44,7 +45,8 @@ public object SatuUtil : FinIdUtil() {
      *
      * @return Random FINUID.
      */
-    override fun generateRandom(): String {
+    @JvmStatic
+    public fun generateRandom(): String {
         val randomIdNumber: Int = Random().nextInt(100000000) // 0..99999999
         val idWoControl = String.format("%08d", randomIdNumber)
         return idWoControl.plus(computeControlChar(randomIdNumber))

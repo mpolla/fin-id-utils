@@ -9,11 +9,6 @@ public abstract class FinIdUtil {
     private val MULTIPLIER = 31
     private val SCALE = 25
 
-
-    public abstract fun isValid(id : String?) : Boolean
-
-    public abstract fun generateRandom() : String
-
     /**
      * Control character computation based on birgth date and the individual number.
      *

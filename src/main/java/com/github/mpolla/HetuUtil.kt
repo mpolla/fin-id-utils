@@ -27,7 +27,8 @@ public object HetuUtil : FinIdUtil() {
      * @param id Identity code to be validated.
      * @return Validity status of identity code.
      */
-    override fun isValid(id: String?): Boolean {
+    @JvmStatic
+    public fun isValid(id: String?): Boolean {
         if (id?.length != HETU_LENGTH) {
             return false
         }
@@ -83,6 +84,7 @@ public object HetuUtil : FinIdUtil() {
      * @param hetu Personal id without the control character suffix.
      * @return Control character.
      */
+    @JvmStatic
     public fun computeControlCharacter(hetu : String): Char {
         val dateIndividualInteger = Integer.parseInt(getDatePart(hetu) + getIndividualPart(hetu))
         return computeControlChar(dateIndividualInteger)
@@ -95,6 +97,7 @@ public object HetuUtil : FinIdUtil() {
      * @param individualNumber Individual number (2..899).
      * @return Control character.
      */
+    @JvmStatic
     public fun computeControlCharacter(birthDate : LocalDate, individualNumber : Int) : Char {
         val dateIndividualInteger = Integer.parseInt(getDatePart(birthDate) + String.format("%03d", individualNumber))
         return computeControlChar(dateIndividualInteger)
@@ -106,6 +109,7 @@ public object HetuUtil : FinIdUtil() {
      * @param hetu Identity code.
      * @return True if male.
      */
+    @JvmStatic
     public fun isMale(hetu: String): Boolean {
         return !isFemale(hetu)
     }
@@ -116,6 +120,7 @@ public object HetuUtil : FinIdUtil() {
      * @param hetu Identity code.
      * @return True if female.
      */
+    @JvmStatic
     public fun isFemale(hetu: String): Boolean {
         val individual = Integer.parseInt(getIndividualPart(hetu))
         return (individual % 2) == 0
@@ -127,7 +132,8 @@ public object HetuUtil : FinIdUtil() {
      *
      * @return Random person identity code.
      */
-    override fun generateRandom() : String {
+    @JvmStatic
+    public fun generateRandom() : String {
         val random = Random()
         val gender = random.nextBoolean()
         val minDay = LocalDate.of(1800, 1, 1).toEpochDay()

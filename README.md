@@ -11,12 +11,12 @@ Maven
     <dependency>
       <groupId>com.github.mpolla</groupId>
       <artifactId>fin-id-utils</artifactId>
-      <version>0.2</version>
+      <version>0.3</version>
     </dependency>
 
 Gradle
 
-    compile("com.github.mpolla:fin-id-utils:0.2")
+    implementation("com.github.mpolla:fin-id-utils:0.3")
 
 ## Usage
 

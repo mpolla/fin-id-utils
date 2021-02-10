@@ -17,6 +17,11 @@ class SatuTest {
     }
 
     @Test
+    fun testControlCharCase() {
+        assertFalse(SatuUtil.isValid("10011187h"))
+    }
+
+    @Test
     fun testInvalidSatu() {
         assertFalse(SatuUtil.isValid("10011187A"))
     }
@@ -24,6 +29,11 @@ class SatuTest {
     @Test
     fun testTooShort() {
         assertFalse(SatuUtil.isValid("10011H"))
+    }
+
+    @Test
+    fun testEmpty() {
+        assertFalse(SatuUtil.isValid(""))
     }
 
     @Test

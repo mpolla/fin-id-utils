@@ -1,5 +1,5 @@
-fin-id-utis - validate Finnish personal identity codes
-======================================================
+fin-id-utils - validate Finnish personal identity codes
+=======================================================
 
 This library provides tools for Finnish personal identity codes HETU (henkilötunnus) ans SATU (sähköinen asiointitunnus).
 

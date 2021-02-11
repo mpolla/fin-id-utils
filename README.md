@@ -1,12 +1,19 @@
 fin-id-utis - validate Finnish personal identity codes
 ======================================================
 
-See https://dvv.fi/en/personal-identity-code
+This library provides tools for Finnish personal identity codes HETU (henkilötunnus) ans SATU (sähköinen asiointitunnus).
 
+Features
+
+* Validate HETU and SATU identity codes.
+* Check gender of a HETU code.
+* Generate random codes.
+
+See https://dvv.fi/en/personal-identity-code
 
 ## Add dependency
 
-Maven
+Apache Maven
 
     <dependency>
       <groupId>com.github.mpolla</groupId>
@@ -14,27 +21,68 @@ Maven
       <version>0.3</version>
     </dependency>
 
-Gradle
+Gradle Kotlin DSL
 
     implementation("com.github.mpolla:fin-id-utils:0.3")
 
-## Usage
+Gradle Groovy DSL
 
-Validate a personal identity code.
+    implementation 'com.github.mpolla:fin-id-utils:0.3'
 
-    HetuUtil.isValid("131052+308T")
+## Usage (Java)
 
-Check the gender of an identity code.
+Validate a HETU/SATU code.
 
-    HetuUtil.isFemale("131052-308T")
+```java
+boolean validHetu = HetuUtil.isValid("131052+308T");
+boolean validSatu = SatuUtil.isValid("10011187H");
+```
 
-Generate random personal identity code.
+Check the gender of a HETU code.
 
-    HetuUtil.generateRandom()
+```java
+boolean isFemale = HetuUtil.isFemale("131052-308T");
+```
+
+Generate random HETU/SATU code.
+
+```java
+String randomHetu = HetuUtil.generateRandom();
+String randomSatu = SatuUtil.generateRandom();
+```
     
-Compute the control character suffix for a personal idenity code.
+Compute the control character suffix for a HETU code.
 
-    HetuUtil.computeControlCharacter("131052-308")
+```java
+Char controlCharacter = HetuUtil.computeControlCharacter("131052-308");
+```
+
+## Usage (Kotlin)
+
+Validate a HETU/SATU code.
+
+```kotlin
+val validHetu = HetuUtil.isValid("131052+308T")
+val validSatu = SatuUtil.isValid("10011187H")
+```
+
+Check the gender of a HETU code.
+
+```kotlin
+val isFemale = HetuUtil.isFemale("131052-308T")
+```
+
+Generate random HETU/SATU code.
+
+```kotlin
+val randomHetu = HetuUtil.generateRandom()
+val randomSatu = SatuUtil.generateRandom()
+```
+    
+Compute the control character suffix for a HETU code.
+
+```kotlin
+val controlCharacter = HetuUtil.computeControlCharacter("131052-308")
+```
 
 ![CI](https://github.com/mpolla/fin-id-utils/workflows/CI/badge.svg)
-

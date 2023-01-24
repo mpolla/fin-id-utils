@@ -55,10 +55,10 @@ public object HetuUtil : FinIdUtil() {
             return false
         }
         val separator : Char = id[6]
-        val yyyy = yy + when (separator) {
-            '+' -> 1800
-            '-' -> 1900
-            'A' -> 2000
+        val yyyy = yy + when {
+            arrayOf("+").contains(separator) -> 1800
+            arrayOf("-", "Y", "X", "W", "V", "U").contains(separator) -> 1900
+            arrayOf("A", "B", "C", "D", "E", "F").contains(separator) -> 2000
             else -> return false
         }
         // Third phase: does the day exist in the calendar?

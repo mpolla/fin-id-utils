@@ -42,6 +42,35 @@ class HetuTest {
     }
 
     /**
+     * Test ids containing new separator characters introduced in 1.1.2023
+     * @see <a href="https://vm.fi/en/project-on-redesigning-the-system-of-personal-identity-codes">Redesigning the personal identity code system</a>
+     */
+    @Test
+    fun test2023redesign() {
+        assertTrue(HetuUtil.isValid("010594Y9032"))
+        assertTrue(HetuUtil.isValid("010594Y9021"))
+        assertTrue(HetuUtil.isValid("020594X903P"))
+        assertTrue(HetuUtil.isValid("020594X902N"))
+        assertTrue(HetuUtil.isValid("030594W903B"))
+        assertTrue(HetuUtil.isValid("030694W9024"))
+        assertTrue(HetuUtil.isValid("040594V9030"))
+        assertTrue(HetuUtil.isValid("040594V902Y"))
+        assertTrue(HetuUtil.isValid("050594U903M"))
+        assertTrue(HetuUtil.isValid("050594U902L"))
+        assertTrue(HetuUtil.isValid("010516B903X"))
+        assertTrue(HetuUtil.isValid("010516B902W"))
+        assertTrue(HetuUtil.isValid("020516C903K"))
+        assertTrue(HetuUtil.isValid("020516C902J"))
+        assertTrue(HetuUtil.isValid("030516D9037"))
+        assertTrue(HetuUtil.isValid("030516D9026"))
+        assertTrue(HetuUtil.isValid("010501E9032"))
+        assertTrue(HetuUtil.isValid("020502E902X"))
+        assertTrue(HetuUtil.isValid("020503F9037"))
+        assertTrue(HetuUtil.isValid("020504A902E"))
+        assertTrue(HetuUtil.isValid("020504B904H"))
+    }
+
+    /**
      * Basic test case of validateing a personal id.
      */
     @Test

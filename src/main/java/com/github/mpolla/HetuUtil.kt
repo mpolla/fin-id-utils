@@ -55,10 +55,10 @@ public object HetuUtil : FinIdUtil() {
             return false
         }
         val separator : Char = id[6]
-        val yyyy = yy + when {
-            arrayOf("+").contains(separator) -> 1800
-            arrayOf("-", "Y", "X", "W", "V", "U").contains(separator) -> 1900
-            arrayOf("A", "B", "C", "D", "E", "F").contains(separator) -> 2000
+        val yyyy = yy + when (separator) {
+            '+' -> 1800
+            '-','Y','X','W','V','U' -> 1900
+            'A','B','C','D','E','F' -> 2000
             else -> return false
         }
         // Third phase: does the day exist in the calendar?
@@ -140,11 +140,20 @@ public object HetuUtil : FinIdUtil() {
         val maxDay = LocalDate.of(2019, 10, 6).toEpochDay()
         val randomEpochDay = minDay + random.nextInt((maxDay - minDay).toInt())
         val randomBirthDate = LocalDate.ofEpochDay(randomEpochDay)
-        val separator = getSeparatorChar(randomBirthDate)
+        val separator = getRandomSeparatorChar(randomBirthDate)
         val individual = getRandomIndividualNumber(gender)
         val datePart = getDatePart(randomBirthDate)
         val idWoControl = String.format("%s%s%03d", datePart, separator, individual)
         return idWoControl + computeControlCharacter(randomBirthDate, individual)
+    }
+
+    private fun getRandomSeparatorChar(randomBirthDate: LocalDate): Any? {
+        return when {
+            randomBirthDate.year in 1800..1899 -> '+'
+            randomBirthDate.year in 1900..1999 -> listOf('-','Y','X','W','V','U').random()
+            randomBirthDate.year >= 2000 -> listOf('A','B','C','D','E','F').random()
+            else -> throw RuntimeException("Birth year out of supported range.")
+        }
     }
 
     /**
@@ -164,6 +173,7 @@ public object HetuUtil : FinIdUtil() {
      *
      * @return Separator character: '+', '-' or 'A'.
      */
+    @Deprecated(message = "Changes in separator characters after 1.1.2023.")
     private fun getSeparatorChar(birthDate: LocalDate) : Char {
         return when {
             birthDate.year in 1800..1899 -> '+'

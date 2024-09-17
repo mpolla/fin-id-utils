@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "com.github.mpolla"
-version = "0.4"
+version = "0.5"
 description = "Utilities for the Finnish personal identity code system"
 
 repositories {

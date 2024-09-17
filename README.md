@@ -18,16 +18,16 @@ Apache Maven
     <dependency>
       <groupId>com.github.mpolla</groupId>
       <artifactId>fin-id-utils</artifactId>
-      <version>0.3</version>
+      <version>0.4</version>
     </dependency>
 
 Gradle Kotlin DSL
 
-    implementation("com.github.mpolla:fin-id-utils:0.3")
+    implementation("com.github.mpolla:fin-id-utils:0.4")
 
 Gradle Groovy DSL
 
-    implementation 'com.github.mpolla:fin-id-utils:0.3'
+    implementation 'com.github.mpolla:fin-id-utils:0.4'
 
 ## Usage (Java)
 

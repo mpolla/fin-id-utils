@@ -85,4 +85,11 @@ Compute the control character suffix for a HETU code.
 val controlCharacter = HetuUtil.computeControlCharacter("131052-308")
 ```
 
+## Development
+
+Publish new release
+
+    git tag x.x
+    ./gradlew publish
+
 ![CI](https://github.com/mpolla/fin-id-utils/workflows/CI/badge.svg)

@@ -12,7 +12,6 @@ description = "Utilities for the Finnish personal identity code system"
 
 repositories {
     mavenCentral()
-    jcenter()
 }
 
 kotlin {
@@ -38,8 +37,8 @@ publishing {
         maven {
             setUrl("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
             credentials {
-                username = findProperty("ossrhToken") as String
-                password = findProperty("ossrhTokenPassword") as String
+                username = findProperty("ossrhToken") as String?
+                password = findProperty("ossrhTokenPassword") as String?
             }
         }
     }

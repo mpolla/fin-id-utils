@@ -38,8 +38,8 @@ publishing {
         maven {
             setUrl("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
             credentials {
-                username = project.properties["ossrhUsername"] as String? ?: "Unknown user"
-                password = project.properties["ossrhPassword"] as String? ?: "Unknown user"
+                username = findProperty("ossrhToken") as String
+                password = findProperty("ossrhTokenPassword") as String
             }
         }
     }
